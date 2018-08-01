@@ -53,11 +53,16 @@ int main() {
         if (choice == 1) {
 
             printGraph(G);
+        } else if (choice == 2) {
+
+            free(G);
         } else {
 
             printf("\nInvalid option choice, try again!!\n\n");
         }
     } while (choice != 2);
+
+    return 0;
 } // end main
 
 // Creating & initialising a new Graph
