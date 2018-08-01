@@ -1,4 +1,11 @@
-// Program to build and print a graph data structure.  
+/*
+ * * Author: Nathaniel Primo (991455464)
+ * * File Name: main.c
+ * * Assignment: Assignment 3
+ * * Creation date: 6/18/2018
+ * * Last Modified: 6/23/2018
+ * * Description: Program to build and print a graph data structure
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,17 +44,19 @@ int main() {
     FILE *in = fopen("graph2.in", "r"); // Opening a text file for reading
     fscanf(in, "%d", &numVertices);     // reading from a text file
     GraphPtr G = newGraph(numVertices); // Creating a new Graph
-    buildGraph(in, G);
+    buildGraph(in, G);                  // Builds the graph using the data from the input file
     fclose(in);                         // Closing the file
 
     do {
 
+        // Notifies the user of available options
         printf("------- Assignment #4 -------\n"
                "1. Print\n"
                "2. Exit\n"
                "---------------------\n"
                "Enter choice number: ");
 
+        // Retrieves the entered user choice
         fscanf(stdin, "%d", &choice);
 
         if (choice == 1) {
@@ -55,12 +64,13 @@ int main() {
             printGraph(G);
         } else if (choice == 2) {
 
+            // Free the allocated graph memory from the stack
             free(G);
         } else {
 
             printf("\nInvalid option choice, try again!!\n\n");
         }
-    } while (choice != 2);
+    } while (choice != 2);                         // Loops the menu when the user has not requested to exit the program
 
     return 0;
 } // end main
