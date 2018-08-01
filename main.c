@@ -1,9 +1,9 @@
 /*
  * * Author: Nathaniel Primo (991455464)
  * * File Name: main.c
- * * Assignment: Assignment 3
- * * Creation date: 6/18/2018
- * * Last Modified: 6/23/2018
+ * * Assignment: Assignment 4
+ * * Creation date: 8/1/2018
+ * * Last Modified: 8/1/2018
  * * Description: Program to build and print a graph data structure
  */
 
@@ -34,6 +34,7 @@ typedef struct graph {
 } *GraphPtr;
 
 int main() {
+
     int numVertices;
     char choice;
 
@@ -77,7 +78,9 @@ int main() {
 
 // Creating & initialising a new Graph
 GraphPtr newGraph(int n) {
+
     if (n > MaxVertices) {
+
         printf("\nToo big. Only %d vertices allowed.\n", MaxVertices);
         exit(1);
     }
@@ -88,6 +91,7 @@ GraphPtr newGraph(int n) {
 
 //Adding Vertices & Edges to the Graph
 void buildGraph(FILE *in, GraphPtr G) {
+
     int numEdges, weight;
 
     GVertex newGVertex(char[]);         // function prototype abstracted
@@ -95,12 +99,15 @@ void buildGraph(FILE *in, GraphPtr G) {
 
     char nodeID[MaxWordSize + 1], adjID[MaxWordSize + 1];
     for (int h = 1; h <= G->numV; h++) {
+
         G->vertex[h] = newGVertex("");      //create a vertex node
         fscanf(in, "%s", G->vertex[h].id);   //read the name into id
     }
     for (int h = 1; h <= G->numV; h++) {
+
         fscanf(in, "%s %d", nodeID, &numEdges); //get parent-id and numEdges
         for (int k = 1; k <= numEdges; k++) {
+
             fscanf(in, "%s %d", adjID, &weight); //get child-id and weight
             addEdge(nodeID, adjID, weight, G);   // add edge to graph
         }
@@ -109,6 +116,7 @@ void buildGraph(FILE *in, GraphPtr G) {
 
 // Creating new vertex
 GVertex newGVertex(char name[]) {
+
     GVertex temp;
     strcpy(temp.id, name);
     temp.firstEdge = NULL;
@@ -117,20 +125,30 @@ GVertex newGVertex(char name[]) {
 
 // Adding new edges
 void addEdge(char X[], char Y[], int weight, GraphPtr G) {
+
     GEdgePtr newGEdge(int, int);
     //add an edge X -> Y with a given weight
     int h, k;
     //find X in the list of nodes; its location is h
-    for (h = 1; h <= G->numV; h++)
-        if (strcmp(X, G->vertex[h].id) == 0)
+    for (h = 1; h <= G->numV; h++) {
+
+        if (strcmp(X, G->vertex[h].id) == 0) {
+
             break;
+        }
+    }
 
     //find Y in the list of nodes; its location is k
-    for (k = 1; k <= G->numV; k++)
-        if (strcmp(Y, G->vertex[k].id) == 0)
+    for (k = 1; k <= G->numV; k++) {
+
+        if (strcmp(Y, G->vertex[k].id) == 0) {
+
             break;
+        }
+    }
 
     if (h > G->numV || k > G->numV) {
+
         printf("No such edge: %s -> %s\n", X, Y);
         exit(1);
     }
@@ -141,6 +159,7 @@ void addEdge(char X[], char Y[], int weight, GraphPtr G) {
     GEdgePtr prev, curr;
     prev = curr = G->vertex[h].firstEdge;
     while (curr != NULL && strcmp(Y, G->vertex[curr->child].id) > 0) {
+
         prev = curr;
         curr = curr->nextEdge;
     }
@@ -150,6 +169,7 @@ void addEdge(char X[], char Y[], int weight, GraphPtr G) {
         ep->nextEdge = G->vertex[h].firstEdge;
         G->vertex[h].firstEdge = ep;
     } else {            // adding orderly in the edge list
+
         ep->nextEdge = curr;
         prev->nextEdge = ep;
     }
@@ -157,6 +177,7 @@ void addEdge(char X[], char Y[], int weight, GraphPtr G) {
 
 // Creating new weighted Edge
 GEdgePtr newGEdge(int c, int w) {
+
     //return a pointer to a new GEdge node
     GEdgePtr p = (GEdgePtr) malloc(sizeof(GEdge));;
     p->child = c;
@@ -167,10 +188,14 @@ GEdgePtr newGEdge(int c, int w) {
 
 // Printing the Graph according to representative model
 void printGraph(GraphPtr G) {
+
     for (int h = 1; h <= G->numV; h++) {
+
         printf("%s: ", G->vertex[h].id);
         GEdgePtr p = G->vertex[h].firstEdge;
+
         while (p != NULL) {
+
             printf("%s %d ", G->vertex[p->child].id, p->weight);
             p = p->nextEdge;
         }
