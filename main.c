@@ -38,6 +38,7 @@ int main() {
     fscanf(in, "%d", &numVertices);     // reading from a text file
     GraphPtr G = newGraph(numVertices); // Creating a new Graph
     buildGraph(in, G);
+    fclose(in);                         // Closing the file
 
     do {
 
@@ -57,8 +58,6 @@ int main() {
             printf("\nInvalid option choice, try again!!\n\n");
         }
     } while (choice != 2);
-
-    fclose(in);                         // Closing the file
 } // end main
 
 // Creating & initialising a new Graph
