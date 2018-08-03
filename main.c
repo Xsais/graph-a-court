@@ -104,7 +104,7 @@ int main() {
 		fscanf(stdin, "%d", &choice);
 
 		// Check if the entered menu option is 1
-		if (choice == 1) {
+		if(choice == 1) {
 			// Print the Graph
 			printGraph(G);
 		}else if(choice == 2) {
@@ -114,7 +114,7 @@ int main() {
 			// Print error message
 			printf("\nInvalid option choice, try again!\n\n");
 		}
-	} while (choice != 2); // Loops the menu when the user has not requested to exit the program
+	} while(choice != 2); // Loops the menu when the user has not requested to exit the program
 
 	// Return 0 out of application
 	return 0;
@@ -172,13 +172,13 @@ void buildGraph(FILE *in, GraphPtr G) {
 	}
 
 	// Loop through and
-	for (int h = 1; h <= G->numV; h++) {
+	for(int h = 1; h <= G->numV; h++) {
 		// Read in the parent-id and numEdges
 		fscanf(in, "%s %d", nodeID, &numEdges);
 
 		// Loop through and
-		for (int k = 1; k <= numEdges; k++) {
-			//  Read in the child-id and weight
+		for(int k = 1; k <= numEdges; k++) {
+			// Read in the child-id and weight
 			fscanf(in, "%s %d", adjID, &weight);
 
 			// Add the edge to the graph
@@ -264,7 +264,7 @@ void addEdge(char X[], char Y[], int weight, GraphPtr G) {
 	prev = curr = G->vertex[h].firstEdge;
 
 	// Loop through and make sure that curr is not null
-	while (curr != NULL && strcmp(Y, G->vertex[curr->child].id) > 0) {
+	while(curr != NULL && strcmp(Y, G->vertex[curr->child].id) > 0) {
 		// Set the previous edge pointer the current edge poitner
 		prev = curr;
 
@@ -324,7 +324,7 @@ GEdgePtr newGEdge(int c, int w) {
  */
 void printGraph(GraphPtr G) {
 	// Loop through the graph
-	for (int h = 1; h <= G->numV; h++) {
+	for(int h = 1; h <= G->numV; h++) {
 		// Print the id of the iterated vertex
 		printf("%s: ", G->vertex[h].id);
 
@@ -332,7 +332,7 @@ void printGraph(GraphPtr G) {
 		GEdgePtr p = G->vertex[h].firstEdge;
 
 		// Loop through edge and print its information
-		while (p != NULL) {
+		while(p != NULL) {
 			// Print the vertex id and weight
 			printf("%s %d ", G->vertex[p->child].id, p->weight);
 
