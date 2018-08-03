@@ -324,7 +324,7 @@ GEdgePtr newGEdge(int c, int w) {
  */
 void printGraph(GraphPtr G) {
 	// Fir Formatting
-	printf("\n\nDisplaying the Graph of Food Places on Campus (Trafalgar) in Meters\n-----------------------------------------------------------------------------------------\n");
+	printf("\n\nDisplaying the Graph of Food Places on Campus (Trafalgar) in Meters\n-------------------------------------------------------------------\n");
 
 		// Loop through the graph
 	for(int h = 1; h <= G->numV; h++) {
@@ -344,6 +344,9 @@ void printGraph(GraphPtr G) {
 		}
 
 		// Print a new line for formatting
-		printf("\n\n");
+		printf("\n");
 	}
+
+	// Print a new line for formatting
+	printf("\n");
 }
