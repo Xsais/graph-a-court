@@ -2,7 +2,7 @@
  * File: main.c
  * Assignment: Assignment 4
  * Creation date: July 23, 2018
- * Last Modified: August 2, 2018
+ * Last Modified: August 3, 2018
  * Description: Used for reading in  a file to create a graph structure
  *
  * GitHub Link: https://github.com/Xsais/graph-a-court/
