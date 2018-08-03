@@ -85,7 +85,7 @@ int main() {
 	void printGraph(GraphPtr);
 
 	// Perform the reading in of the graph file
-	FILE *in = fopen("graph2.in", "r"); // Opening a text file for reading
+	FILE *in = fopen("graph.in", "r"); // Opening a text file for reading
 	fscanf(in, "%d", &numVertices);     // Read in from text file
 	GraphPtr G = newGraph(numVertices); // Creating a new Graph
 	buildGraph(in, G);                  // Builds the graph using the data from the input file
