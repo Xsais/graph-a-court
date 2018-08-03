@@ -95,8 +95,8 @@ int main() {
 	do {
 		// Notifies the user of available options
 		printf("---- Assignment #4 ----\n"
-			   "1. Print\n"
-			   "2. Exit\n"
+			   "1. Print Graph\n"
+			   "2. Exit Graph\n"
 			   "------------------------\n"
 			   "Enter choice number: ");
 
@@ -323,10 +323,10 @@ GEdgePtr newGEdge(int c, int w) {
  *
  */
 void printGraph(GraphPtr G) {
-	// Fir Formatting
+	// Add for Formatting
 	printf("\n\nDisplaying the Graph of Food Places on Campus (Trafalgar) in Meters\n-------------------------------------------------------------------\n");
 
-		// Loop through the graph
+	// Loop through the graph
 	for(int h = 1; h <= G->numV; h++) {
 		// Print the id of the iterated vertex
 		printf("%s: ", G->vertex[h].id);
