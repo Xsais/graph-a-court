@@ -334,7 +334,7 @@ void printGraph(GraphPtr G) {
 		// Loop through edge and print its information
 		while(p != NULL) {
 			// Print the vertex id and weight
-			printf("%s %d ", G->vertex[p->child].id, p->weight);
+			printf("%s %dm ", G->vertex[p->child].id, p->weight);
 
 			// Assign the pointer to the next edge
 			p = p->nextEdge;
